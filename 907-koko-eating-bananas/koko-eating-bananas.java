@@ -1,7 +1,10 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        Arrays.sort(piles);
-        int low=1,high=piles[piles.length-1];
+        int max=0;
+        for(int i:piles){
+            if(i>max) max=i;
+        }
+        int low=1,high=max;
         int rate=Integer.MAX_VALUE;
         while(low<=high){
             int mid=(low+high)/2;
