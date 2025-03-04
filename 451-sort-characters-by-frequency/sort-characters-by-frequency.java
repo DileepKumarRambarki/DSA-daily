@@ -6,15 +6,13 @@ class Solution {
         for(int i=0;i<s.length();i++){
             char ch=s.charAt(i);
             hm.put(ch,hm.getOrDefault(ch,0)+1);
-            max=Math.max(max,hm.get(ch));
         }
-        for(int i=max;i>0;i--){
-            for(char f:hm.keySet()){
-                if(hm.get(f)==i){
-                    for(int k=0;k<i;k++){
-                    res+=f;
-                    }
-                }
+        PriorityQueue<Map.Entry<Character,Integer>> pq=new PriorityQueue<>((a,b)->b.getValue()-a.getValue());
+        pq.addAll(hm.entrySet());
+        while(!pq.isEmpty()){
+            Map.Entry<Character,Integer> entry=pq.poll();
+            for(int i=0;i<entry.getValue();i++){
+                res+=entry.getKey();
             }
         }
         return res;
