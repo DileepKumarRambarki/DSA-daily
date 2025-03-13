@@ -13,16 +13,22 @@ public class Solution {
     public ListNode detectCycle(ListNode head) {
         ListNode temp=head;
         if(head==null) return null;
-        HashMap<ListNode, Integer> hm=new HashMap<>();
-        while(temp!=null){
-            if(hm.containsKey(temp)){
-                return temp;
-            }
-            else{
-                hm.put(temp,0);
-                temp=temp.next;
+        if(head.next==null) return null;
+        ListNode slow=head,fast=head;
+        while(fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                break;
             }
         }
+        if(slow!=fast) return null;
+        ListNode pos=head;
+        while(pos!=slow){
+            pos=pos.next;
+            slow=slow.next;
+        }
+        if(pos==slow) return pos;
         return null;
     }
 }
