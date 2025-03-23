@@ -14,19 +14,20 @@ class Solution {
         ListNode temp=head;
         ListNode[] arr=new ListNode[30];
         int k=0;
-        while(temp!=null){
-            len++;
-            arr[k++]=temp;
+        for(int i=0;i<n;i++){
             temp=temp.next;
         }
-        int del=len-n;
-        if(del>0){
-        temp=arr[del-1];
-            temp.next=temp.next.next;
-        }
-        else{
+        ListNode fast=temp;
+        ListNode slow=head;
+        if(fast==null){
             head=head.next;
+            return head;
         }
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        slow.next=slow.next.next;
         return head;
     }
 }
