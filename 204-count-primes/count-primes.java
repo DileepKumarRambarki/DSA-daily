@@ -7,8 +7,8 @@ class Solution {
       prime[1]=false;
       for(int i=2;i<=(int)Math.sqrt(n);i++){
         if(prime[i]){
-            for(double j=i*i;j<n;j+=i){
-                prime[(int)j]=false;
+            for(int j=i*i;j<n;j+=i){
+                prime[j]=false;
             }
         }
       }  
