@@ -25,9 +25,10 @@ class Solution {
         char ch=digits.charAt(pos);
         char arr[]=keys.get(ch);
         for(char a:arr){
-            StringBuilder temp=new StringBuilder(sb);
-            temp.append(a);
-            rec(temp,res,pos+1,digits,keys);
+            // StringBuilder temp=new StringBuilder(sb);
+            sb.append(a);
+            rec(sb,res,pos+1,digits,keys);
+            sb.deleteCharAt(sb.length()-1);
         }
     }
 }
