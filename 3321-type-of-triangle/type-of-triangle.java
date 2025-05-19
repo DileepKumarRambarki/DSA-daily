@@ -7,9 +7,9 @@ class Solution {
             return "none";
         } 
         HashSet<Integer> hs=new HashSet<>();
-        for(int i:nums){
-            hs.add(i);
-        }
+        hs.add(a);
+        hs.add(b);
+        hs.add(c);
         if(hs.size()==1) return "equilateral";
         else if(hs.size()==2) return "isosceles";
         return "scalene";
