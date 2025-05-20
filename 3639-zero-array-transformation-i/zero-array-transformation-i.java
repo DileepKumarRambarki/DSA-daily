@@ -12,10 +12,7 @@ class Solution {
         for(int i=0;i<n;i++){
                 sub+=arr[i];
                 nums[i]-=sub;
-        }
-        for(int i:nums){
-            System.out.print(i+" ");
-            if(i>0) return false;
+                if(nums[i]>0) return false;
         }
         return true;
     }
