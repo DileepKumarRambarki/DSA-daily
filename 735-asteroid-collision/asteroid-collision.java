@@ -3,7 +3,27 @@ class Solution {
         Stack<Integer> st=new Stack<>();
         for(int i=0;i<asteroids.length;i++){
             int curr=asteroids[i];
-            help(curr,st);
+            if(curr>0){
+                st.push(curr);
+            }
+            else{
+                if(st.isEmpty()||st.peek()<0){
+                    st.push(curr);
+                    continue;
+                }
+                while(!st.isEmpty()&&st.peek()>0&&-curr>st.peek()){
+                    st.pop();
+                }
+                if(!st.isEmpty()&&-curr<st.peek()){
+                    continue;
+                }
+                else if(!st.isEmpty()&&-curr==st.peek()){
+                    st.pop();
+                }
+                else{
+                    st.push(curr);
+                }
+            }
         }
        int res[]=new int[st.size()];
        int k=st.size()-1;
