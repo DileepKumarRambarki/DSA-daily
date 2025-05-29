@@ -9,7 +9,7 @@ class Solution {
         }
         int r=s1.length()-1,l=0;
         while(r<s2.length()){
-            if(Arrays.equals(f1,f2)) return true;            
+            if(f1[s2.charAt(l)-'a']>0&&Arrays.equals(f1,f2)) return true;            
             r++;
             if(r<s2.length()){
                 f2[s2.charAt(r)-'a']++;
